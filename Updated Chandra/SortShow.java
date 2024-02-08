@@ -67,14 +67,20 @@ public class SortShow extends JPanel {
     }
 
     //////////////////////////////// BUBBLE SORT ///////////////////////////////////////////////////
-
+    //Bubble sort method
     public void BubbleSort(){
+        //get time when bubble sort begins
         Calendar start = Calendar.getInstance();
+        //Using bubble sort to total_number_of_lines sort the array
         BubbleSort(total_number_of_lines);
+        //get time when bubble sort ends
         Calendar end = Calendar.getInstance();
+        //print time spent on bubble sort
         SortGUI.bubbleTime = end.getTime().getTime() - start.getTime().getTime();
 
     }
+
+    //bubble sort implementation
     public void BubbleSort(int n){
        if(n>1){
            for(int i=0;i<n-1;i++){
@@ -129,13 +135,19 @@ public class SortShow extends JPanel {
 
 
     //////////////////////////////// INSERTION SORT ///////////////////////////////////////////////////
+    
+    //Insertion sort method
     public void InsertionSort(){
+        //get time when insertion sort begins
         Calendar start = Calendar.getInstance();
+        //use insertion sort to sort lines
         insertionSort(0,total_number_of_lines-1);
+        //get time when insertion sort ends
         Calendar end = Calendar.getInstance();
+        //print time spent on insertion sort
         SortGUI.insertionTime = end.getTime().getTime() - start.getTime().getTime();
     }
-
+    //insertion sort implementation
     public void insertionSort(int first,int last){
         if(first<last){
             insertionSort(first,last-1);
@@ -144,7 +156,7 @@ public class SortShow extends JPanel {
             delay(10);
         }
     }
-
+    //insert in order function that inserts the element in the correct order
     public void insertInOrder(int removedElement,int begin,int end){
         if(removedElement>=lines_lengths[end]){
             lines_lengths[end+1]=removedElement;
@@ -162,21 +174,25 @@ public class SortShow extends JPanel {
 
 
 
-    //QUICK SORT
-
+    //QUICK SORT method
     public void QuickSort(){
+        //get time when Quick Sort starts
         Calendar start = Calendar.getInstance();
+        //sort lines using Quick Sort
         quicksort(lines_lengths,0,total_number_of_lines-1);
+        //get time when Quick Sort ends
         Calendar end = Calendar.getInstance();
+        //print time spend on Quick Sory
         SortGUI.quickTime = end.getTime().getTime() - start.getTime().getTime();
 
     }
 
-    // The main quicksort method
+    // The main quicksort method implementation
     private void quicksort(int[] arr, int low, int high) {
         if (low < high) {
             int pivotIndex = partition(arr, low, high);
             paintComponent(this.getGraphics());
+            //delay to ensure continuity among time spent on each sorting method
             delay(21);
             quicksort(arr, low, pivotIndex - 1); // Sort the left part
             quicksort(arr, pivotIndex + 1, high); // Sort the right part
@@ -209,23 +225,28 @@ public class SortShow extends JPanel {
     ///////////////////////////////////////////////////////////////////////////////////
 
 
-    //SHELL SORT
+    //SHELL SORT method
 
     public void ShellSort(){
+        //get time when shell sort begins
         Calendar start = Calendar.getInstance();
+        //use shell sort to sort lines
         shellSort(lines_lengths);
+        //get time when shell sort ends
         Calendar end = Calendar.getInstance();
+        //print time spent on shell sort
         SortGUI.shellTime = end.getTime().getTime() - start.getTime().getTime();
 
     }
 
-
+    //shell sort implementation
     public void shellSort(int[] arr) {
         int n = arr.length;
 
         // Start with a gap n/2, then reduce the gap half everytime
         for (int gap = n / 2; gap > 0; gap --) {
             paintComponent(this.getGraphics());
+            //delay to ensure continuity among time spent on each sorting method
             delay(20);
 
             // Insertion sort for the gap size
